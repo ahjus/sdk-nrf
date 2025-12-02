@@ -13,24 +13,7 @@
 
 int main(void)
 {
-	int err = nrf_modem_lib_init();
-
-	if (err == 0) {
-		char modem_version[MODEM_INFO_MAX_RESPONSE_SIZE];
-
-		err = modem_info_init();
-		if (err != 0) {
-			printk("Modem info Init error: %d\n\r", err);
-		} else {
-			modem_info_string_get(MODEM_INFO_FW_VERSION,
-					modem_version,
-					MODEM_INFO_MAX_RESPONSE_SIZE);
-			printk("Starting modem mgmt sample\n\r");
-			printk("Modem version: %s\n\r", modem_version);
-		}
-	}
-	/* Shutdown modem to prepare for DFU */
-	nrf_modem_lib_shutdown();
+	int err = 0;
 
 	nrf_modem_lib_bootloader_init();
 	/* Register SMP Communication stats */
